@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exclusão de dados — Radar de Posts</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header><div class="wrap"><p class="eyebrow">Radar de Posts</p><h1>Instruções de exclusão de dados</h1></div></header>
+<main class="wrap">
+
+<p><strong>Última atualização:</strong> 6 de novembro de 2026.</p>
+
+<section>
+  <h2>1. Onde os dados ficam</h2>
+  <p>O Radar de Posts é uma ferramenta de linha de comando executada localmente. Não existe
+     servidor, banco de dados ou armazenamento central. Cada execução lê os dados da Meta e
+     grava o resultado em um arquivo JSON na máquina de quem executou o comando
+     (<code>resultado.json</code>).</p>
+</section>
+
+<section>
+  <h2>2. Como excluir</h2>
+  <ol>
+    <li><strong>Excluir o resultado local:</strong> apague o arquivo <code>resultado.json</code>
+        (e qualquer cópia dele) da máquina. A exclusão é imediata e definitiva.</li>
+    <li><strong>Revogar o token de acesso:</strong> no painel da Meta, abra o aplicativo
+        <em>Radar de Posts</em> (ID 1543669897570294) e remova a conta do Instagram vinculada, ou
+        gere um novo token e substitua o valor no arquivo <code>.env</code>. Token revogado não
+        acessa mais nada.</li>
+    <li><strong>Desinstalar o app:</strong> remova o diretório do projeto da máquina; nada
+        permanece além dos arquivos que você mesmo salvou.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>3. Pedido de exclusão por terceiros</h2>
+  <p>Se você é titular de dados publicados pela Meta e quer que sejam desconsiderados em
+     consultas de benchmark, envie o pedido para
+     <a href="mailto:lucasdgtl11@gmail.com">lucasdgtl11@gmail.com</a> com o @usuário da conta.
+     Vamos incluir a conta na lista de exclusão do app e não realizar novas consultas sobre ela.</p>
+</section>
+
+<section>
+  <h2>4. Dados da Meta</h2>
+  <p>Os dados originais pertencem à Meta e são governados pelas políticas dela. Para correção ou
+     eliminação do conteúdo de origem, use as ferramentas da própria Meta (Instagram →
+     Configurações → Central de Contas ou a página
+     <a href="https://www.instagram.com/accounts/manage_access/" rel="noopener">Apps e sites</a>)
+     ou os canais oficiais de privacidade da Meta.</p>
+</section>
+
+<section>
+  <h2>5. Contato</h2>
+  <p><a href="mailto:lucasdgtl11@gmail.com">lucasdgtl11@gmail.com</a> &middot;
+     Lucas Digital &middot; Rio de Janeiro, RJ, CEP 21550-370, Brasil.</p>
+</section>
+
+</main>
+<footer><div class="wrap"><p><a href="index.html">Voltar ao app</a> &middot;
+<a href="privacidade.html">Política de Privacidade</a> &middot;
+<a href="termos.html">Termos de Serviço</a></p></div></footer>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radar de Posts — ferramenta de análise de conteúdo no Instagram</title>
+<meta name="description" content="Radar de Posts: ferramenta interna que lê publicações de contas profissionais do Instagram e as métricas de engajamento (comentários, curtidas, visualizações) para ranquear os posts que mais performaram.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <p class="eyebrow">App do Instagram Graph API</p>
+    <h1>Radar de Posts</h1>
+    <p class="lead">Ferramenta interna de análise de conteúdo para contas profissionais do Instagram.
+      Lê as publicações e as métricas de engajamento (comentários, curtidas e visualizações) e
+      mostra quais posts mais bombaram em um período.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section>
+  <h2>O que o app faz</h2>
+  <ul>
+    <li>Lê o perfil da conta profissional do Instagram (id, username, número de seguidores).</li>
+    <li>Lê as publicações: legenda, data de publicação, link permanente e tipo de mídia.</li>
+    <li>Lê as métricas de engajamento de cada publicação: <strong>comentários</strong>,
+      <strong>curtidas</strong> e <strong>visualizações</strong>.</li>
+    <li>Ordena tudo por número de comentários e mostra o ranking (top 10 por padrão).</li>
+    <li>Salva o resultado completo em um arquivo JSON local.</li>
+    <li>Para benchmark, usa o endpoint <em>Business Discovery</em> para consultar o mesmo conjunto
+      de métricas públicas de <strong>outras contas Business ou Creator</strong>.</li>
+  </ul>
+  <p><strong>O app é estritamente de leitura.</strong> Ele não publica, não edita, não comenta
+    e não remove nada. Não há envio de dados a terceiros nem compartilhamento entre contas.</p>
+</section>
+
+<section>
+  <h2>Permissões do Instagram usadas</h2>
+  <table>
+    <tr><th>Permissão</th><th>Para que é usada</th></tr>
+    <tr><td><code>instagram_basic</code></td><td>Ler o perfil da conta profissional e o conteúdo publicado (legenda, data, link, tipo de mídia).</td></tr>
+    <tr><td><code>instagram_manage_insights</code></td><td>Ler as métricas de desempenho (comentários, curtidas, visualizações) das publicações, inclusive de outras contas comerciais descobertas pelo Business Discovery.</td></tr>
+    <tr><td><code>pages_read_engagement</code></td><td>Confirmar que o solicitante é o proprietário do ativo de negócio associado à conta do Instagram.</td></tr>
+    <tr><td><code>pages_show_list</code></td><td>Listar as Páginas do solicitante para localizar a página vinculada à conta do Instagram.</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>Como testar (passo a passo)</h2>
+  <p>O app é uma ferramenta de linha de comando (CLI) em Node.js, executada localmente pela
+     equipe. Não há cadastro de usuário nem tela de login: o token de acesso é gerado no painel
+     da Meta e gravado no arquivo <code>.env</code> do projeto, que está no <code>.gitignore</code>
+     e nunca é versionado nem exibido em tela.</p>
+
+  <h3>1. Conferir as permissões e a conta conectada</h3>
+  <pre><code>node bin/ig-bombers.mjs check</code></pre>
+  <p>Chama <code>GET /me/permissions</code> e <code>GET /me</code> e imprime as permissões
+     concedidas e a conta do Instagram conectada.</p>
+
+  <h3>2. Ler as publicações e as métricas da própria conta</h3>
+  <pre><code>node bin/ig-bombers.mjs lucasdgtl__ --dias 30</code></pre>
+  <p>Mostra a tabela com perfil, comentários, curtidas, visualizações, data e link de cada
+     publicação do período, ordenada por comentários, e salva o resultado em
+     <code>resultado.json</code>.</p>
+
+  <h3>3. Consultar outra conta comercial (Business Discovery)</h3>
+  <pre><code>node bin/ig-bombers.mjs nicksaraev --dias 30</code></pre>
+  <p>Consulta <code>GET /{ig-user-id}?fields=business_discovery.username(...)</code> e devolve
+     apenas métricas públicas (seguidores, comentários, curtidas, visualizações) da conta
+     descoberta. Nenhum dado privado ou de contato é lido.</p>
+
+  <h3>4. Onde os dados ficam</h3>
+  <p>Somente no arquivo <code>resultado.json</code> gerado na máquina de quem executou o
+     comando. Nada é enviado para servidores da Lucas Digital.</p>
+</section>
+
+<section>
+  <h2>Detalhes do app</h2>
+  <ul>
+    <li><strong>Nome:</strong> Radar de Posts</li>
+    <li><strong>ID do aplicativo Meta:</strong> 1543669897570294</li>
+    <li><strong>Produto:</strong> API do Instagram com login unificado (Instagram Professional Account)</li>
+    <li><strong>Login do Facebook:</strong> não integrado — a autenticação é do Instagram</li>
+    <li><strong>Pagamento:</strong> não há cobrança nem assinatura; o app é interno</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Contato e documentos</h2>
+  <ul>
+    <li>E-mail: <a href="mailto:lucasdgtl11@gmail.com">lucasdgtl11@gmail.com</a></li>
+    <li><a href="privacidade.html">Política de Privacidade</a></li>
+    <li><a href="termos.html">Termos de Serviço</a></li>
+    <li><a href="exclusao.html">Instruções de exclusão de dados</a></li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Lucas Digital &middot; Rio de Janeiro, RJ &middot;
+       <a href="mailto:lucasdgtl11@gmail.com">lucasdgtl11@gmail.com</a></p>
+  </div>
+</footer>
+</body>
+</html>
